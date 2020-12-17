@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "typeRoots": ["./types", "./node_modules/@types", "../node_modules/@types"],
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "declaration": true,
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src/**/*"]
+}
