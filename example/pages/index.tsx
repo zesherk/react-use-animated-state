@@ -1,7 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
-import { useState, useEffect } from "react";
 import { useAnimatedState } from "../../use-animated-state/dist";
 
 export default function Home() {
@@ -10,13 +9,20 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>React useAnimatesState hook</title>
+        <title>React useAnimatedState hook</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          React <a href="https://nextjs.org">useAnimatesState</a> hook
+          React{" "}
+          <a
+            target="_blank"
+            href="https://github.com/zesherk/use-animated-state"
+          >
+            useAnimatedState
+          </a>{" "}
+          hook
         </h1>
         <p className={styles.description}>
           Custom hook to animate mounting & unmounting components
@@ -39,24 +45,20 @@ export default function Home() {
           >
             Toggle component
           </div>
-          <div>
-            {show && (
-              <div className={styles.card} style={style}>
-                <h3>I'm transitioning!</h3>
-                <p>Discover and deploy boilerplate example Next.js projects.</p>
-              </div>
-            )}
-          </div>
+
+          {show && (
+            <div className={styles.card} style={style}>
+              <h3>I'm transitioning!</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+          )}
         </div>
       </main>
 
       <footer className={styles.footer}>
-        <a
-          href="https://github.com/zesherk"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Made with ❤ by <strong>Zesherk</strong>
+        Made with ❤ by{" "}
+        <a href="https://github.com/zesherk" target="_blank">
+          Zesherk
         </a>
       </footer>
     </div>
