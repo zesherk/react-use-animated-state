@@ -1,30 +1,41 @@
 import * as React from "react";
+import transitions from "./transitions";
+
+type AnimationType = "fade" | "shiftAway";
+interface CustomAnimation {
+  timeout: number;
+  from: React.CSSProperties;
+  to: React.CSSProperties;
+}
 
 export default function useAnimatedState(
   value: boolean,
-  options: {
-    timeout: number;
-    from: React.CSSProperties;
-    to: React.CSSProperties;
-  }
+  options: CustomAnimation | AnimationType
 ) {
   const [show, setShow] = React.useState<boolean>(value);
   const [fakeShow, setFakeShow] = React.useState<boolean>(value);
 
   const [style, setStyle] = React.useState<React.CSSProperties>({});
+  const config = React.useMemo(() => {
+    // @TODO Think of a better condition
+    if (typeof options === "string") {
+      return transitions[options as AnimationType];
+    }
+    return options as CustomAnimation;
+  }, [options]);
 
   React.useEffect(() => {
     if (fakeShow) {
       setShow(fakeShow);
-      setStyle(options.from);
+      setStyle(config.from);
       setTimeout(() => {
-        setStyle(options.to);
+        setStyle(config.to);
       });
     } else {
-      setStyle({ ...options.from });
+      setStyle({ ...config.from });
       setTimeout(() => {
         setShow(fakeShow);
-      }, options.timeout);
+      }, config.timeout);
     }
   }, [fakeShow]);
 
@@ -32,7 +43,10 @@ export default function useAnimatedState(
     show,
     setFakeShow,
     {
-      style: { transition: `all ease ${options.timeout}ms`, ...style },
+      style: {
+        transition: `all cubic-bezier(.46,.1,.52,.98) ${config.timeout}ms`,
+        ...style,
+      },
     },
   ] as [
     boolean,
