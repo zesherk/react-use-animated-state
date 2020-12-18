@@ -10,7 +10,7 @@ interface CustomAnimation {
 
 export default function useAnimatedState(
   value: boolean,
-  options: CustomAnimation | AnimationType
+  options: CustomAnimation | AnimationType = "fade"
 ) {
   const [show, setShow] = React.useState<boolean>(value);
   const [fakeShow, setFakeShow] = React.useState<boolean>(value);
