@@ -6,6 +6,12 @@ interface CustomAnimation {
   timeout: number;
   from: React.CSSProperties;
   to: React.CSSProperties;
+  transition?: {
+    property : React.CSSProperties["transitionProperty"];
+    duration : React.CSSProperties["transitionDuration"];
+    timingFunction : React.CSSProperties["transitionTimingFunction"];
+    delay? : React.CSSProperties["transitionDelay"];
+  }
 }
 
 export default function useAnimatedState(
