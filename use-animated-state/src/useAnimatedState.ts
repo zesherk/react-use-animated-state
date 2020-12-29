@@ -7,11 +7,11 @@ interface CustomAnimation {
   from: React.CSSProperties;
   to: React.CSSProperties;
   transition?: {
-    property : React.CSSProperties["transitionProperty"];
-    duration : React.CSSProperties["transitionDuration"];
-    timingFunction : React.CSSProperties["transitionTimingFunction"];
-    delay? : React.CSSProperties["transitionDelay"];
-  }
+    property: React.CSSProperties["transitionProperty"];
+    duration: React.CSSProperties["transitionDuration"];
+    timingFunction: React.CSSProperties["transitionTimingFunction"];
+    delay?: React.CSSProperties["transitionDelay"];
+  };
 }
 
 export default function useAnimatedState(
@@ -50,7 +50,21 @@ export default function useAnimatedState(
     setFakeShow,
     {
       style: {
-        transition: `all cubic-bezier(.46,.1,.52,.98) ${config.timeout}ms`,
+        ...((config as CustomAnimation).transition
+          ? {
+              transitionProperty: (config as CustomAnimation).transition
+                ?.property,
+              transitionDuration: (config as CustomAnimation).transition
+                ?.duration,
+              transitionTimingFunction: (config as CustomAnimation).transition
+                ?.timingFunction,
+              ...((config as CustomAnimation).transition?.delay && {
+                transitionDelay: (config as CustomAnimation).transition?.delay,
+              }),
+            }
+          : {
+              transition: `all cubic-bezier(.46,.1,.52,.98) ${config.timeout}ms`,
+            }),
         ...style,
       },
     },
