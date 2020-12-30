@@ -19,9 +19,10 @@ export default function useAnimatedState(
   options: CustomAnimation | AnimationType = "fade"
 ) {
   const [show, setShow] = React.useState<boolean>(value);
-  const [fakeShow, setFakeShow] = React.useState<boolean>(value);
-
+  const [animateShow, setAnimateShow] = React.useState<boolean>(value);
   const [style, setStyle] = React.useState<React.CSSProperties>({});
+  const AnimationTimer = React.useRef<ReturnType<typeof setTimeout>>();
+
   const config = React.useMemo(() => {
     // @TODO Think of a better condition
     if (typeof options === "string") {
@@ -31,23 +32,25 @@ export default function useAnimatedState(
   }, [options]);
 
   React.useEffect(() => {
-    if (fakeShow) {
-      setShow(fakeShow);
-      setStyle(config.from);
-      setTimeout(() => {
+    if (animateShow) {
+      setShow(animateShow);
+      requestAnimationFrame(() => {
         setStyle(config.to);
       });
-    } else {
-      setStyle({ ...config.from });
-      setTimeout(() => {
-        setShow(fakeShow);
-      }, config.timeout);
     }
-  }, [fakeShow]);
+    setStyle(config.from);
+    AnimationTimer.current = setTimeout(() => {
+      setShow(animateShow);
+    }, config.timeout);
+
+    () => {
+      if (AnimationTimer.current) return clearTimeout(AnimationTimer.current);
+    };
+  }, [animateShow]);
 
   return [
     show,
-    setFakeShow,
+    setAnimateShow,
     {
       style: {
         ...((config as CustomAnimation).transition
