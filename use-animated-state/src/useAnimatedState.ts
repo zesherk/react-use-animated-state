@@ -1,7 +1,7 @@
 import * as React from "react";
 import transitions from "./transitions";
 
-type AnimationType = "fade" | "shiftAway";
+type AnimationType = keyof typeof transitions;
 interface CustomAnimation {
   duration: number;
   from: React.CSSProperties;
