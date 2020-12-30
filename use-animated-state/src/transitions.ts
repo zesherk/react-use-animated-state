@@ -1,9 +1,9 @@
-const timeout = 200;
+const duration = 200;
 const transitions = {
   fade: {
     from: { opacity: 0 },
     to: { opacity: 1 },
-    timeout,
+    duration,
   },
   shiftAway: {
     from: {
@@ -16,7 +16,7 @@ const transitions = {
       transformOrigin: "0 -50%",
       opacity: 1,
     },
-    timeout,
+    duration,
   },
 };
 
