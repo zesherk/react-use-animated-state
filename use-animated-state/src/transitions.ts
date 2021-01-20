@@ -5,7 +5,7 @@ const transitions = {
     to: { opacity: 1 },
     duration,
   },
-  shiftUp: {
+  shiftAway: {
     from: {
       transform: "translateY(-10px)",
       transformOrigin: "0 -50%",
@@ -18,7 +18,7 @@ const transitions = {
     },
     duration,
   },
-  shiftDown: {
+  shiftToward: {
     from: {
       transform: "translateY(10px)",
       transformOrigin: "0 -50%",
