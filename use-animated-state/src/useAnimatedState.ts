@@ -50,7 +50,7 @@ export default function useAnimatedState(
       if (RequestAnimation.current)
         cancelAnimationFrame(RequestAnimation.current);
     };
-  }, [animateShow]);
+  }, [animateShow, config]);
 
   return [
     show,
@@ -63,7 +63,7 @@ export default function useAnimatedState(
                 ?.property,
               transitionTimingFunction: (config as CustomAnimation).transition
                 ?.timingFunction,
-              transitionDuration: `${(config as CustomAnimation).duration}ms`,
+              transitionDuration: `${config.duration}ms`,
               ...((config as CustomAnimation).transition?.delay && {
                 transitionDelay: (config as CustomAnimation).transition?.delay,
               }),
