@@ -1,7 +1,10 @@
 # React Use Animated State
 
 
-Use Animated State is a React custom hook that allows animating components when added or removed from the React tree, using simple CSS transitions. It goes around the gap react has in components' lifecycle, since there isn’t a method that notifies components when they're about to be unmounted, and allow them to run an operation before the unmounting is complete.
+Use Animated State is a React custom hook that allows animating components when added or removed from the React tree, using simple CSS transitions. 
+
+It goes around the gap react has in components' lifecycle, since there isn’t a method that notifies components when they're about to be unmounted, and allow them to run an operation before the unmounting is complete.
+
 
 ## Installation
 
@@ -18,6 +21,7 @@ npm install --save react-use-animated-state
 ```
 
 Please note that react-use-animated-state requires react@^16.8.0 as a peer dependency.
+
 
 ## Basic Usage
 
