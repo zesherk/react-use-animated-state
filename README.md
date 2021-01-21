@@ -1,9 +1,9 @@
 # React Use Animated State
 
 
-Use Animated State is a React custom hook that allows animating components when added or removed from the React tree, using simple CSS transitions. 
+Use Animated State is a React custom hook that allows animating components when added or removed from the React tree, using simple CSS transitions.
 
-It goes around the gap react has in components' lifecycle, since there isn’t a method that notifies components when they're about to be unmounted, and allow them to run an operation before the unmounting is complete.
+It goes around the gap react has in components' lifecycle, since there isn't a method that notifies components when they're about to be unmounted, and allows them to run an operation before the unmounting is complete.
 
 
 ## Installation
@@ -25,7 +25,7 @@ Please note that react-use-animated-state requires react@^16.8.0 as a peer depen
 
 ## Basic Usage
 
-Use can use `useAnimatedState` exactly as `React.useState` is used, the main difference is that `useAnimatedState` returns an extra style object that needs to be passed down to the component that is being animated.
+Use can use `useAnimatedState` exactly as `React.useState` is used; the main difference is that `useAnimatedState` returns an extra style object that needs to be passed down to the component that is being animated.
 
 ```jsx
 import { useAnimatedState } from "react-use-animated-state";
@@ -56,7 +56,7 @@ The possible options are `fade`, `shiftAway`, and `shiftToward`.
 
 
 ## Advanced Usage
-To use a custom animation, you can pass an object as a second parameter of the hook, the object should contain a `from`, `to`, and `duration` properties.
+To use a custom animation, you can pass an object as a second parameter of the hook; the object should contain a `from`, `to`, and `duration` properties.
 - `from` and `to`
   - Type: **CSSProperties**: Both should describe the CSS props the component should transition while (un)mounting.
 - `duration`: 
