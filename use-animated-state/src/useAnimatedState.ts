@@ -26,7 +26,6 @@ export default function useAnimatedState(
   >();
 
   const config = React.useMemo(() => {
-    // @TODO Think of a better condition
     if (typeof options === "string") {
       return transitions[options as AnimationType];
     }
