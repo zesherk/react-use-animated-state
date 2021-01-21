@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
-import { useAnimatedState } from "../../use-animated-state/dist";
+import { useAnimatedState } from "react-use-animated-state";
 
 export default function Home() {
   const [show, setShow, { style }] = useAnimatedState(false, "shiftAway");
