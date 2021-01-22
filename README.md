@@ -57,10 +57,10 @@ The possible options are `fade`, `shiftAway`, and `shiftToward`.
 
 ## Advanced Usage
 To use a custom animation, you can pass an object as a second parameter of the hook; the object should contain a `from`, `to`, and `duration` properties.
-- `from` and `to`
+- `from` and `to`:
   - Type: **CSSProperties**: Both should describe the CSS props the component should transition while (un)mounting.
 - `duration`: 
-  - Type: **String**; The length of time the transition should take to complete
+  - Type: **number**; The length of time the transition should take to complete
 
 ```jsx
   const [show, setShow, { style }] = useAnimatedState(false, {
