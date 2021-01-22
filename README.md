@@ -60,7 +60,7 @@ To use a custom animation, you can pass an object as a second parameter of the h
 - `from` and `to`:
   - Type: **CSSProperties**: Both should describe the CSS props the component should transition while (un)mounting.
 - `duration`: 
-  - Type: **number**; The length of time the transition should take to complete
+  - Type: **number**; The length of time the transition should take to complete in ms.
 
 ```jsx
   const [show, setShow, { style }] = useAnimatedState(false, {
